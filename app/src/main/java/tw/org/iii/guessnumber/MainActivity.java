@@ -1,7 +1,5 @@
 package tw.org.iii.guessnumber;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initGame();
+                choiceDialog();
             }
         });
         set = findViewById(R.id.set);
@@ -68,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initGame(){
-//        choiceDialog();
         answer = createAnswer(3);
         input.setText("");
         log.setText("");
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             input.setText("");
             log.append(strInput + ":" + result + "\n");
             Toast.makeText(MainActivity.this,"已經猜了9次,剩下最後一次機會",Toast.LENGTH_LONG).show();
-            if (result.equals("3A0B")){
+            if (result.equals("3A0B")||result.equals("4A0B")||result.equals("5A0B")){
                 showDialog();
             }
         }if(count==10){
@@ -93,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             input.setText("");
             log.append(strInput + ":" + result + "\n");
-            if (result.equals("3A0B")){
+            if (result.equals("3A0B")||result.equals("4A0B")||result.equals("5A0B")){
                 showDialog();
             }
         }
@@ -167,37 +164,11 @@ public class MainActivity extends AppCompatActivity {
                                 default:
                                     return;
                             }
-//                        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//                            @Override
-//                            public void onCheckedChanged(RadioGroup radioGroup, int radioButton) {
-//                                switch (radioButton){
-//                                    case radioButton3:
-//                                        answer = createAnswer(3);
-//                                        input.setText("");
-//                                        log.setText("");
-//                                        Log.v("grey3", answer);
-//                                        System.out.print(answer);
-//                                        break;
-//                                    case R.id.fourn:
-//                                        answer = createAnswer(4);
-//                                        input.setText("");
-//                                        log.setText("");
-//                                        Log.v("grey4", answer);
-//                                        System.out.print(answer);
-//                                        break;
-//                                    case R.id.fiven:
-//                                        answer = createAnswer(5);
-//                                        input.setText("");
-//                                        log.setText("");
-//                                        Log.v("grey5", answer);
-//                                        System.out.print(answer);
-//                                        break;
-//                                }
-//                            }
-//                        });
+
                     }
                 }).show();
     }
+
     static String checkAB(String a, String g) {
         int A, B; A = B = 0;
 
