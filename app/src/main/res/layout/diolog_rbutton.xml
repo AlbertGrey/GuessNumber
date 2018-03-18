@@ -31,9 +31,6 @@
             android:text="5碼"
             android:textSize="17sp"
             />
-
-
-
     </RadioGroup>
 
 </LinearLayout>
